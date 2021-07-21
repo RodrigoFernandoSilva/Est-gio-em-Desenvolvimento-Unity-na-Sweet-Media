@@ -63,9 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AcessoAPI.cs" />
-    <Compile Include="Assets\Scripts\Formulario.cs" />
-    <Compile Include="Assets\Scripts\ValidarFormulario.cs" />
+    <Compile Include="Assets\Scripts\ApiException.cs" />
+    <Compile Include="Assets\Scripts\ApiServerToolBox.cs" />
+    <Compile Include="Assets\Scripts\FromInfo.cs" />
+    <Compile Include="Assets\Scripts\Popup.cs" />
+    <Compile Include="Assets\Scripts\PopupController.cs" />
+    <Compile Include="Assets\Scripts\ValidadeInfo.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
