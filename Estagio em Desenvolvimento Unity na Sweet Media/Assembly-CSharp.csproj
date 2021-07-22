@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ApiException.cs" />
     <Compile Include="Assets\Scripts\ApiServerToolBox.cs" />
+    <Compile Include="Assets\Scripts\BirthDateInputField.cs" />
     <Compile Include="Assets\Scripts\FromInfo.cs" />
     <Compile Include="Assets\Scripts\Popup.cs" />
     <Compile Include="Assets\Scripts\PopupController.cs" />

@@ -15,7 +15,16 @@ public class FromInfo : MonoBehaviour {
     [SerializeField]
     private InputField _birthDate;
 
+    public string strModelo;
+
     public void Submit() {
+        if (!ValidadeInfo.ValidadeBirthDate(_birthDate.text)) {
+            PopupController.instance.ShowPopupMessage("Data de nascimento invalida.");
+        } else {
+            PopupController.instance.ShowPopupMessage("Dados recebido com sucesso!");
+        }
+
+        return;
         if (string.IsNullOrEmpty(_name.text)) {
             PopupController.instance.ShowPopupMessage("Digite um nome.");
         } else if (string.IsNullOrEmpty(_email.text)) {
@@ -27,9 +36,10 @@ public class FromInfo : MonoBehaviour {
         } else if (!ValidadeInfo.ValidadeBirthDate(_email.text)) {
             PopupController.instance.ShowPopupMessage("Data de nascimento invalida.");
         } else {
-            PopupController.instance.ShowPopupJustText("Carregando");
+            PopupController.instance.ShowPopupMessage("Dados recebido com sucesso!");
+            //PopupController.instance.ShowPopupJustText("Carregando");
             //ApiServerToolBox.instance.SubmitForm("Rodrigo", "Rodrigo Fernando da Silva", "Batata@hotmail.com", "09/10/1998", SubmitCallBack);
-            ApiServerToolBox.instance.SubmitForm(_name.text.Split(' ')[0].ToLower(), _name.text, _email.text, _birthDate.text.Replace("/", ""), SubmitCallBack);
+            //ApiServerToolBox.instance.SubmitForm(_name.text.Split(' ')[0].ToLower(), _name.text, _email.text, _birthDate.text.Replace("/", ""), SubmitCallBack);
         }
     }
 
@@ -49,6 +59,9 @@ public class FromInfo : MonoBehaviour {
                         break;
                     case 2: //Data de nascimento vazia.
                         PopupController.instance.ShowPopupMessage("Data de nascimento não digitada.");
+                        break;
+                    default:
+                        PopupController.instance.ShowPopupMessage("Erro, tente novamente mais tarde.");
                         break;
                 }
             }
