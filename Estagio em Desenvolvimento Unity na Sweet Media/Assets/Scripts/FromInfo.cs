@@ -1,9 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+using System;
 using UnityEngine.UI;
 
 public class FromInfo : MonoBehaviour {
@@ -18,13 +15,6 @@ public class FromInfo : MonoBehaviour {
     public string strModelo;
 
     public void Submit() {
-        if (!ValidadeInfo.ValidadeBirthDate(_birthDate.text)) {
-            PopupController.instance.ShowPopupMessage("Data de nascimento invalida.");
-        } else {
-            PopupController.instance.ShowPopupMessage("Dados recebido com sucesso!");
-        }
-
-        return;
         if (string.IsNullOrEmpty(_name.text)) {
             PopupController.instance.ShowPopupMessage("Digite um nome.");
         } else if (string.IsNullOrEmpty(_email.text)) {
@@ -33,13 +23,12 @@ public class FromInfo : MonoBehaviour {
             PopupController.instance.ShowPopupMessage("Email invalido.");
         } else if (string.IsNullOrEmpty(_birthDate.text)) {
             PopupController.instance.ShowPopupMessage("Digite uma data de nascimento.");
-        } else if (!ValidadeInfo.ValidadeBirthDate(_email.text)) {
+        } else if (!ValidadeInfo.ValidadeBirthDate(_birthDate.text)) {
             PopupController.instance.ShowPopupMessage("Data de nascimento invalida.");
         } else {
-            PopupController.instance.ShowPopupMessage("Dados recebido com sucesso!");
-            //PopupController.instance.ShowPopupJustText("Carregando");
+            PopupController.instance.ShowPopupJustText("Carregando");
             //ApiServerToolBox.instance.SubmitForm("Rodrigo", "Rodrigo Fernando da Silva", "Batata@hotmail.com", "09/10/1998", SubmitCallBack);
-            //ApiServerToolBox.instance.SubmitForm(_name.text.Split(' ')[0].ToLower(), _name.text, _email.text, _birthDate.text.Replace("/", ""), SubmitCallBack);
+            ApiServerToolBox.instance.SubmitForm(_name.text.Split(' ')[0].Trim().ToLower(), _name.text.Trim(), _email.text.Trim(), _birthDate.text, SubmitCallBack);
         }
     }
 

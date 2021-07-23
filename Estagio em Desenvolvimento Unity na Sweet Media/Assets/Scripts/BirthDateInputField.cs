@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
@@ -17,6 +15,10 @@ public class BirthDateInputField : MonoBehaviour {
 
     public void ApplyMask() {
         if (_lastStr != _myInputField.text) {
+            if (_myInputField.text.Length > 10) {
+                _myInputField.text = _lastStr;
+            }
+
             //Permite somente números, não foi setado isso direto no inputfiled pois o quando o script vai color o "/" da erro caso o inputfield
             //esta aceitando somente números.
             string strResult = Regex.Replace(_myInputField.text, @"\W|\D", "");
